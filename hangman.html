@@ -1,0 +1,35 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Home</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!--===============================================================================================-->
+
+</head>
+
+<body>
+<hi>Let's play hangman</hi>
+    <div id="hangman">
+        <p id="answer-display"></p>
+        <p id="hiddenAnswer-display"></p>
+        <p id="guessedLetters-display"></p> 
+        <p id="guessedWrongLetters-display"></p>
+        <p id="numberOfGuesses-display"></p>
+        <p id="guesses-left"></p>
+        <p id="win-counter"></p>
+        <p id="loss-counter"></p>
+
+        Guess a letter
+        <input type="text" id="letter-input">
+    
+        <button onclick="guessLetter()" id="guess-button">Guess</button>
+        <button onclick="resetGame()">Reset</button>
+
+    </div>
+    <script src="js/main.js"></script>
+
+    </body>
+    </html>
