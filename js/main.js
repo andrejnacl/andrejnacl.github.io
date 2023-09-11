@@ -9,6 +9,7 @@ let englishWords = [];
 function guessLetter() {
 
     let letter = document.getElementById("letter-input").value;
+    letter = letter.toLowerCase();
     // Check if the user entered a name and it's not null or empty
     if (letter && letter.trim() !== "") {
         // Check if the user entered more than one letter or a number
@@ -50,6 +51,7 @@ function guessLetter() {
             guessedWrongLetters.push(letter)
             displayGuessedWrongLetters()
         }
+
         numberOfGuesses++
         displayNumberOfGuesses()
 
