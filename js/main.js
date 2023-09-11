@@ -53,7 +53,7 @@ function guessLetter() {
         numberOfGuesses++
         displayNumberOfGuesses()
 
-        if(numberOfGuesses === allowedGuesses){
+        if(numberOfGuesses === allowedGuesses && !gameFinished){
             gameFinished = true
             alert(`You are dead. Sad story. The answer was ${hangmanAnswer}.`)
         }
