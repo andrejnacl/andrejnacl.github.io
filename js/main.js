@@ -65,6 +65,9 @@ function guessLetter() {
         if(gameFinished) {
             const guessButton = document.getElementById("guess-button");
             guessButton.disabled = true
+
+            const hintButton = document.getElementById("hint-button");
+            hintButton.disabled = true
             alert(`Game over, please reset the game.`)
         }
 
@@ -117,6 +120,9 @@ async function resetGame() {
 
     const guessButton = document.getElementById("guess-button");
     guessButton.disabled = false
+
+    const hintButton = document.getElementById("hint-button");
+    hintButton.disabled = false
 }
 
 function displayGuessedLetters() {
@@ -180,4 +186,21 @@ async function fetchAndProcessData() {
     } catch (error) {
         console.error('Error:', error);
     }
+}
+
+function showHint() {
+    console.log(hangmanAnswer, hiddenAnswer)
+    //regex that removes spaces from hiddenAnswer
+    let regex = / /gi;
+    let hiddenAnswerNoSpaces = hiddenAnswer.replace(regex, "");
+    let firstHiddenLetterIndex = hiddenAnswerNoSpaces.indexOf("_");
+    let firstHiddenLetter = hangmanAnswer[firstHiddenLetterIndex];
+
+    console.log(firstHiddenLetter, hiddenAnswerNoSpaces, firstHiddenLetterIndex)
+
+    clearLetterInput()
+
+    const letterInput =  document.getElementById("letter-input");
+    letterInput.value = firstHiddenLetter
+    letterInput.focus()
 }
