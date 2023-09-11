@@ -19,7 +19,7 @@ function guessLetter() {
         
         // Check if the user entered the same letter before
         if (guessedLetters.indexOf(letter) > -1 || guessedWrongLetters.indexOf(letter) > -1) {
-            alert("You have already guessed this letter! Guess again, illiterate noob!");
+            alert("You have already guessed this letter!");
         } 
         else {
             
@@ -71,7 +71,7 @@ function guessLetter() {
 
 // Function to get a random word
 function getRandomWord() {
-    console.log(englishWords)
+
     const randomIndex = Math.floor(Math.random() * englishWords.length);
     return englishWords[randomIndex];
 }
@@ -87,10 +87,10 @@ document.addEventListener("keyup", function(event) {
     }
 });
 
-function resetGame() {
+async function resetGame() {
     gameFinished = false;
 
-    fetchAndProcessData();
+    await fetchAndProcessData();
 
     hangmanAnswer = getRandomWord();
     const answerDisplay = document.getElementById("answer-display");
@@ -131,6 +131,7 @@ function displayHiddenAnswer() {
 function clearLetterInput() {
     const letterInput =  document.getElementById("letter-input");
     letterInput.value = ""
+    letterInput.focus()
 }
 
 function displayGuessedWrongLetters() {
@@ -171,7 +172,7 @@ async function fetchAndProcessData() {
     try {
         const data = await fetchAlternative();
         // You can work with 'data' here once the Promise is resolved
-        console.log('Fetched data:', data);
+        console.log('Data fetched.');
 
         // Continue with other actions or processing here
     } catch (error) {
