@@ -31,7 +31,7 @@
     // Set the background image
     const backgroundImage = new Image();
     backgroundImage.crossOrigin = "anonymous";
-    backgroundImage.src = 'dzindzi2.jpeg'; // Update with the correct image path
+    backgroundImage.src = 'https://andrejnacl.github.io/kata/dzindzi2.jpeg'
 
     // Ensure the image is loaded before drawing
     backgroundImage.onload = function () {
@@ -46,21 +46,29 @@
         ctx.drawImage(backgroundImage, 0, 0, canvas.width, canvas.height);
     }
 
-    // Initialize the canvas size
-    function initializeCanvasSize() {
-        // Calculate the size of each grid cell
-        const cols = 3; // Change the number of columns as needed
-        const rows = 4; // Change the number of rows as needed
-        const cellWidth = canvas.width / cols;
-        const cellHeight = canvas.height / rows;
+// Initialize the canvas size
+function initializeCanvasSize() {
+    // Calculate the size of each grid cell
+    const cols = 3; // Change the number of columns as needed
+    const rows = 4; // Change the number of rows as needed
 
-        // Draw the initial grid
-        for (let i = 0; i < rows; i++) {
-            for (let j = 0; j < cols; j++) {
-                ctx.strokeRect(j * cellWidth, i * cellHeight, cellWidth, cellHeight);
-            }
+    // Ensure that the canvas height is the window height
+    canvas.height = window.innerHeight;
+    canvas.width = (window.innerHeight / 4) * 3; // Maintain a 3:4 aspect ratio
+
+    const cellWidth = canvas.width / cols;
+    const cellHeight = window.innerHeight / rows;
+
+    // Draw the initial grid
+    for (let i = 0; i < rows; i++) {
+        for (let j = 0; j < cols; j++) {
+            ctx.strokeRect(j * cellWidth, i * cellHeight, cellWidth, cellHeight);
         }
     }
+}
+
+
+
 
     // Handle click events on the canvas
     canvas.addEventListener('click', function (event) {
