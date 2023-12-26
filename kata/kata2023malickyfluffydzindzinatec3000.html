@@ -41,8 +41,8 @@
 
     // Draw the background image on the canvas
     function drawBackground() {
-        canvas.width = backgroundImage.width;
-        canvas.height = backgroundImage.height;
+        canvas.height = window.innerHeight;
+        canvas.width = (window.innerHeight / 4) * 3; 
         ctx.drawImage(backgroundImage, 0, 0, canvas.width, canvas.height);
     }
 
